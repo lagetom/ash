@@ -3,118 +3,167 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🌊 타고 남은 재</title>
+    <title>🌊 타고 남은 재의 공간</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6097617241369024"
+      crossorigin="anonymous"
+    ></script>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         font-family: "IBM Plex Sans KR", sans-serif;
         background: linear-gradient(
           135deg,
-          #1e3c72 0%,
-          #2a5298 50%,
-          #ff6b6b 100%
+          #1a1f3a 0%,
+          #2d4578 30%,
+          #4a6fa5 60%,
+          #ff8a65 85%,
+          #ffab91 100%
         );
-        color: #2d2d2d;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
-        margin: 0;
         padding: 20px;
-        box-sizing: border-box;
         position: relative;
         overflow-x: hidden;
       }
 
-      /* 파도 애니메이션 배경 */
+      /* 바다 파도 애니메이션 */
+      @keyframes wave {
+        0%,
+        100% {
+          transform: translateX(0) translateY(0);
+        }
+        25% {
+          transform: translateX(-5%) translateY(-2%);
+        }
+        50% {
+          transform: translateX(-10%) translateY(0);
+        }
+        75% {
+          transform: translateX(-5%) translateY(2%);
+        }
+      }
+
       body::before {
         content: "";
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 200%;
         height: 100%;
         background: radial-gradient(
-            ellipse at 50% 80%,
-            rgba(255, 107, 107, 0.15) 0%,
+            ellipse at 30% 60%,
+            rgba(74, 111, 165, 0.3) 0%,
             transparent 50%
           ),
           radial-gradient(
-            ellipse at 20% 50%,
-            rgba(42, 82, 152, 0.2) 0%,
+            ellipse at 70% 40%,
+            rgba(255, 138, 101, 0.25) 0%,
             transparent 50%
+          ),
+          radial-gradient(
+            circle at 50% 90%,
+            rgba(45, 69, 120, 0.2) 0%,
+            transparent 40%
           );
+        animation: wave 15s ease-in-out infinite;
         pointer-events: none;
         z-index: 0;
+      }
+
+      /* 떠다니는 파티클 효과 */
+      @keyframes float-particle {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 0.6;
+        }
+        50% {
+          transform: translateY(-20px) scale(1.1);
+          opacity: 0.8;
+        }
+      }
+
+      body::after {
+        content: "✨";
+        position: fixed;
+        top: 20%;
+        right: 15%;
+        font-size: 24px;
+        animation: float-particle 4s ease-in-out infinite;
+        z-index: 0;
+        opacity: 0.5;
       }
 
       .container {
         position: relative;
         z-index: 1;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 40px 45px;
-        border-radius: 28px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-        max-width: 420px;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        padding: 45px 50px 40px;
+        border-radius: 32px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+        max-width: 450px;
         width: 100%;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        text-align: center;
       }
 
       h1 {
-        margin: 0;
-        font-size: 30px;
+        font-size: 32px;
         font-weight: 600;
-        background: linear-gradient(135deg, #1e3c72, #ff6b6b);
+        margin-bottom: 8px;
+        background: linear-gradient(135deg, #2d4578 0%, #ff8a65 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        letter-spacing: -0.5px;
       }
 
-      p {
-        font-size: 16px;
+      .subtitle {
+        font-size: 17px;
         color: #666;
         font-weight: 500;
-        margin-top: 12px;
-        margin-bottom: 35px;
+        margin-bottom: 40px;
         line-height: 1.6;
       }
 
-      .section-title {
-        font-size: 20px;
-        font-weight: 600;
-        color: #2d2d2d;
-        margin: 30px 0 18px 0;
-        text-align: left;
-      }
-
-      /* 아코디언 스타일 */
+      /* 아코디언 버튼 */
       .accordion {
-        color: #fff;
-        cursor: pointer;
-        padding: 18px;
         width: 100%;
+        background: linear-gradient(135deg, #4a6fa5 0%, #2d4578 100%);
+        color: white;
         border: none;
-        text-align: center;
-        outline: none;
+        border-radius: 20px;
+        padding: 20px 24px;
         font-size: 18px;
         font-weight: 600;
-        transition: all 0.3s ease;
-        border-radius: 18px;
-        margin: 12px 0;
-        font-family: "IBM Plex Sans KR", sans-serif;
-        background: linear-gradient(135deg, #2a5298, #1e3c72);
-        box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+        cursor: pointer;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        margin: 10px 0;
         position: relative;
         overflow: hidden;
+        box-shadow: 0 4px 20px rgba(74, 111, 165, 0.35);
+        font-family: "IBM Plex Sans KR", sans-serif;
       }
 
+      /* 파도 효과 */
       .accordion::before {
         content: "";
         position: absolute;
@@ -124,45 +173,50 @@
         height: 100%;
         background: linear-gradient(
           90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
+          transparent 0%,
+          rgba(255, 255, 255, 0.25) 50%,
+          transparent 100%
         );
-        transition: left 0.5s;
+        transition: left 0.6s ease;
+      }
+
+      .accordion:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(74, 111, 165, 0.45);
       }
 
       .accordion:hover::before {
         left: 100%;
       }
 
-      .accordion:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(30, 60, 114, 0.4);
-      }
-
       .accordion.active {
-        background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-        box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        background: linear-gradient(135deg, #ff8a65 0%, #ff7043 100%);
+        box-shadow: 0 8px 30px rgba(255, 138, 101, 0.45);
       }
 
-      /* 패널 스타일 */
+      .accordion:active {
+        transform: translateY(-1px);
+      }
+
+      /* 패널 */
       .panel {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease-out;
-        background-color: #f8f9fa;
-        border-radius: 16px;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+        border-radius: 18px;
         margin-top: 8px;
       }
 
       .panel a {
         display: block;
-        padding: 14px 20px;
-        text-decoration: none;
+        padding: 16px 24px;
         color: #2d2d2d;
+        text-decoration: none;
         font-size: 16px;
-        transition: all 0.3s;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
         position: relative;
       }
 
@@ -170,76 +224,153 @@
         border-bottom: none;
       }
 
+      .panel a::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background: linear-gradient(180deg, #4a6fa5, #ff8a65);
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+      }
+
       .panel a:hover {
         background: linear-gradient(
           90deg,
-          rgba(42, 82, 152, 0.1),
-          rgba(255, 107, 107, 0.1)
+          rgba(74, 111, 165, 0.08) 0%,
+          rgba(255, 138, 101, 0.08) 100%
         );
-        padding-left: 30px;
-        color: #1e3c72;
+        padding-left: 34px;
+        color: #2d4578;
         font-weight: 600;
       }
 
-      .footer {
-        margin-top: 40px;
-        font-size: 32px;
-        animation: float 3s ease-in-out infinite;
+      .panel a:hover::before {
+        transform: scaleY(1);
       }
 
-      @keyframes float {
+      /* 광고 영역 */
+      .ad-container {
+        margin: 30px 0 10px 0;
+        min-height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 푸터 */
+      .footer {
+        margin-top: 20px;
+        font-size: 38px;
+        animation: float-wave 3s ease-in-out infinite;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+      }
+
+      @keyframes float-wave {
         0%,
         100% {
-          transform: translateY(0px);
+          transform: translateY(0) rotate(0deg);
         }
-        50% {
-          transform: translateY(-10px);
+        25% {
+          transform: translateY(-8px) rotate(-5deg);
+        }
+        75% {
+          transform: translateY(-8px) rotate(5deg);
         }
       }
 
       /* 반응형 */
-      @media (max-width: 480px) {
+      @media (max-width: 768px) {
         .container {
-          padding: 30px 25px;
+          padding: 40px 40px;
+          border-radius: 30px;
         }
         h1 {
-          font-size: 26px;
+          font-size: 30px;
+        }
+        .accordion {
+          font-size: 17px;
+          padding: 18px 22px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 35px 30px;
+          border-radius: 28px;
+        }
+        h1 {
+          font-size: 28px;
         }
         .accordion {
           font-size: 16px;
-          padding: 16px;
+          padding: 16px 20px;
+          border-radius: 18px;
+        }
+        .panel a {
+          font-size: 15px;
+          padding: 14px 20px;
         }
       }
     </style>
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6097617241369024"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <div class="container">
       <h1>(‾◡◝)</h1>
-      <p>타고 남은 재의 공간</p>
+      <p class="subtitle">타고 남은 재의 공간</p>
 
-      <div class="section-title">🫠♨️</div>
-      <button class="accordion">🔥</button>
+      <!-- 전체 도구 (공용 도구와 동일) -->
+      <button class="accordion">🏞 전체 도구 ▼</button>
       <div class="panel">
-        <a href="https://lagetom.github.io/ash1" target="_blank">1</a>
+        <a href="https://lagetom.github.io/ash1/" target="_blank"
+          >✨ 단어 변환기</a
+        >
+        <a href="https://lagetom.github.io/ash2/" target="_blank"
+          >✏️ 글 작성기</a
+        >
+        <a href="https://lagetom.github.io/ash3/" target="_blank"
+          >🖍️ 단어 형광펜</a
+        >
+        <a href="https://lagetom.github.io/ash4/" target="_blank"
+          >🧼 이미지 세탁소</a
+        >
+        <a href="https://lagetom.github.io/ash5/" target="_blank"
+          >🖼️ 이미지 작업실</a
+        >
+        <a href="https://lagetom.github.io/ash6/" target="_blank"
+          >👔 이미지 리폼실</a
+        >
+      </div>
+
+      <!-- 광고 영역 -->
+      <div class="ad-container">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-6097617241369024"
+          data-ad-slot="auto"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
 
       <div class="footer">🌊</div>
     </div>
 
     <script>
-      var acc = document.getElementsByClassName("accordion");
-      var i;
+      // 아코디언 토글 기능
+      const accordions = document.getElementsByClassName("accordion");
 
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function () {
+      for (let i = 0; i < accordions.length; i++) {
+        accordions[i].addEventListener("click", function () {
           this.classList.toggle("active");
+          const panel = this.nextElementSibling;
 
-          var panel = this.nextElementSibling;
           if (panel.style.maxHeight) {
             panel.style.maxHeight = null;
           } else {
